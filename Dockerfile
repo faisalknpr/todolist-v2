@@ -11,4 +11,6 @@ COPY . /app
 RUN npm install body-parser express ejs lodash mongodb mongoose
 
 # Define the entry point for the container
-CMD ["npm", "start"]
+CMD ["npm", "todolist-v2/app.js"]
+
+EXPOSE 3000
