@@ -8,7 +8,7 @@ WORKDIR /todolist-v2
 COPY . /app
 
 # Install the application dependencies
-RUN npm install body-parser, express, ejs, lodash, mongodb, mongoose
+RUN npm install body-parser express ejs lodash mongodb mongoose
 
 # Define the entry point for the container
 CMD ["npm", "start"]
