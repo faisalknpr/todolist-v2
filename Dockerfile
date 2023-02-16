@@ -1,6 +1,5 @@
-bashCopy code
 # Use the official Node.js image as the base image
-FROM node:12
+FROM node:16.18.0
 
 # Set the working directory in the container
 WORKDIR /todolist-v2
