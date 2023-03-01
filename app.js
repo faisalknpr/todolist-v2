@@ -1,5 +1,6 @@
 //jshint esversion:6
 
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -13,8 +14,14 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 mongoose.set('strictQuery', false);
-const cloudCluster = "mongodb+srv://faisalknpr:jqtxwxDyO2j0K2vj@clusterk.23wqc7w.mongodb.net/todolistDB?retryWrites=true&w=majority";
-mongoose.connect(cloudCluster,{useNewUrlParser:true});
+
+
+    const cloudCluster = "mongodb+srv://faisalknpr:jqtxwxDyO2j0K2vj@clusterk.23wqc7w.mongodb.net/todolistDB?retryWrites=true&w=majority";
+    const conn = mongoose.connect(cloudCluster,{useNewUrlParser:true});
+    console.log(`MongoDB Connected`);
+
+
+
 const itemSchema = {name:String};
 const Item = mongoose.model("item",itemSchema);
 const item1 = new Item({name:"Welcome to your todolist!"});
@@ -110,8 +117,8 @@ app.post("/delete", function(req,res){
 app.get("/about", function(req, res){
   res.render("about");
 });
+const PORT = process.env.PORT || 3000;
 
-
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
+app.listen(PORT, function() {
+  console.log(`Server started on port ${PORT}`);
 });
